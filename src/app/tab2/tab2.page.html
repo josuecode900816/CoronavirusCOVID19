@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar class="ionicToolbar">
+        <ion-title class="ionicTitle">
+      Coronavirus por Países
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Coronavirus por Países</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-toolbar>
+    <ion-searchbar class="searchbar-input" [(ngModel)]="searchCountry" autocomplete="off" [animated]="true"></ion-searchbar>
+  </ion-toolbar>
+
+  <ion-list *ngFor="let country of countries | filter:searchCountry">
+    <ion-item>
+      <ion-label>
+        <h1>{{country.country}}</h1>
+        <p>
+          Casos: {{country.cases | number}} | Hoy: {{country.todayCases | number}} | Activos: {{country.active | number}}<br>
+          Muertes: {{country.deaths | number}} | Hoy: {{country.todayDeaths | number}}<br>
+          Recuperados: {{country.recovered | number}} | Criticos {{country.critical | number}}
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
